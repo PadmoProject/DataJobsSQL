@@ -12,7 +12,10 @@ WITH top_paying_jobs as (
     LEFT JOIN company_dim on company_dim.company_id = job_postings_fact.company_id
     WHERE
         (job_title_short like '%Data Analyst%') AND
-        (job_location like '%Indonesia%') AND (salary_year_avg is not null)
+        ((job_location like '%Indonesia%') OR
+        (job_location like '%Anywhere%') OR 
+        (job_work_from_home = TRUE)) AND 
+        (salary_year_avg is not null)
     ORDER BY
         salary_year_avg desc
     LIMIT 10 
@@ -27,6 +30,3 @@ INNER JOIN skills_dim on skills_dim.skill_id = skills_job_dim.skill_id
 ORDER BY
     salary_year_avg desc
 
-/*
-Could possibly export to JSON to ask AI to make insights 
-*/

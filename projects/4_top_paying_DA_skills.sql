@@ -25,6 +25,3 @@ ORDER BY
     yearly_salary desc
 LIMIT 25
 
-/*
-Could possibly export to JSON to ask AI to make insights 
-*/
